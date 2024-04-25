@@ -1,0 +1,34 @@
+{
+  "_id": 1,
+  "name": "osman",
+  "surname": "yaycıoğlu",
+  "age": 54,
+  "address": {
+    "street": "ataşehir",
+    "city": "istanbul"
+  },
+  "phones": [
+    {
+      "name": "ev",
+      "number": "5435448548"
+    },
+    {
+      "name": "ofis",
+      "number": "543542394"
+    },
+    {
+      "name": "yazlık",
+      "number": "532423494"
+    }
+  ],
+  "votes" : [
+    {
+      "name" : "ayşe alaz",
+      "score" : 100
+    },
+    {
+      "name" : "ali veli",
+      "score" : 100
+    }
+  ]
+}

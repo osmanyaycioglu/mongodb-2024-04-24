@@ -1,0 +1,10 @@
+{
+  "_id" : 1,
+  "name" : "osman",
+  "surname" : "yaycıoğlu",
+  "age" : 54,
+  "address" : {
+    "street" : "ataşehir",
+    "city" : "istanbul"
+  }
+}

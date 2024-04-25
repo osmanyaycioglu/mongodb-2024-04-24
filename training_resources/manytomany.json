@@ -1,0 +1,54 @@
+{
+  "_id": 1,
+  "name": "osman",
+  "surname": "yaycıoğlu",
+  "age": 54,
+  "address": {
+    "street": "ataşehir",
+    "city": "istanbul"
+  },
+  "visitedCities": [
+    "ankara",
+    "izmir",
+    "adana"
+  ],
+  "phones": [
+    {
+      "name": "ev",
+      "number": "5435448548"
+    },
+    {
+      "name": "ofis",
+      "number": "543542394"
+    },
+    {
+      "name": "yazlık",
+      "number": "532423494"
+    }
+  ],
+  "votes": [
+    {
+      "name": "ayşe alaz",
+      "score": 100
+    },
+    {
+      "name": "ali veli",
+      "score": 100
+    }
+  ],
+  "department": {
+    "name": "IT",
+    "city": "istanbul",
+    "street": "ataşehir"
+  },
+  "Groups": [
+    {
+      "groupName": "gr1",
+      "groupLocation": "istanbul"
+    },
+    {
+      "groupName": "gr2",
+      "groupLocation": "ankara"
+    }
+  ]
+}
