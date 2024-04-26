@@ -1,0 +1,215 @@
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'test.imdb',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [
+        { genres: { '$eq': 'Short' } },
+        { genres: { '$eq': 'Drama' } },
+        { year: { '$lt': 1970 } }
+      ]
+    },
+    queryHash: '5BBF4614',
+    planCacheKey: '1228CCA5',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'FETCH',
+      filter: { genres: { '$eq': 'Drama' } },
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { genres: 1, runtime: 1, year: 1 },
+        indexName: 'genres_1_runtime_1_year_1',
+        isMultiKey: true,
+        multiKeyPaths: { genres: [ 'genres' ], runtime: [], year: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          genres: [ '["Short", "Short"]' ],
+          runtime: [ '[MinKey, MaxKey]' ],
+          year: [ '[-inf.0, 1970)' ]
+        }
+      }
+    },
+    rejectedPlans: [
+      {
+        stage: 'FETCH',
+        filter: {
+          '$and': [ { genres: { '$eq': 'Short' } }, { year: { '$lt': 1970 } } ]
+        },
+        inputStage: {
+          stage: 'IXSCAN',
+          keyPattern: { genres: 1 },
+          indexName: 'genres_1',
+          isMultiKey: true,
+          multiKeyPaths: { genres: [ 'genres' ] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { genres: [ '["Drama", "Drama"]' ] }
+        }
+      },
+      {
+        stage: 'FETCH',
+        filter: {
+          '$and': [ { genres: { '$eq': 'Drama' } }, { year: { '$lt': 1970 } } ]
+        },
+        inputStage: {
+          stage: 'IXSCAN',
+          keyPattern: { genres: 1 },
+          indexName: 'genres_1',
+          isMultiKey: true,
+          multiKeyPaths: { genres: [ 'genres' ] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: { genres: [ '["Short", "Short"]' ] }
+        }
+      },
+      {
+        stage: 'FETCH',
+        filter: { genres: { '$eq': 'Short' } },
+        inputStage: {
+          stage: 'IXSCAN',
+          keyPattern: { genres: 1, runtime: 1, year: 1 },
+          indexName: 'genres_1_runtime_1_year_1',
+          isMultiKey: true,
+          multiKeyPaths: { genres: [ 'genres' ], runtime: [], year: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: {
+            genres: [ '["Drama", "Drama"]' ],
+            runtime: [ '[MinKey, MaxKey]' ],
+            year: [ '[-inf.0, 1970)' ]
+          }
+        }
+      },
+      {
+        stage: 'FETCH',
+        filter: {
+          '$and': [
+            { genres: { '$eq': 'Short' } },
+            { genres: { '$eq': 'Drama' } },
+            { year: { '$lt': 1970 } }
+          ]
+        },
+        inputStage: {
+          stage: 'AND_SORTED',
+          inputStages: [
+            {
+              stage: 'IXSCAN',
+              keyPattern: { genres: 1 },
+              indexName: 'genres_1',
+              isMultiKey: true,
+              multiKeyPaths: { genres: [ 'genres' ] },
+              isUnique: false,
+              isSparse: false,
+              isPartial: false,
+              indexVersion: 2,
+              direction: 'forward',
+              indexBounds: { genres: [ '["Short", "Short"]' ] }
+            },
+            {
+              stage: 'IXSCAN',
+              keyPattern: { genres: 1 },
+              indexName: 'genres_1',
+              isMultiKey: true,
+              multiKeyPaths: { genres: [ 'genres' ] },
+              isUnique: false,
+              isSparse: false,
+              isPartial: false,
+              indexVersion: 2,
+              direction: 'forward',
+              indexBounds: { genres: [ '["Drama", "Drama"]' ] }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 14,
+    executionTimeMillis: 1,
+    totalKeysExamined: 120,
+    totalDocsExamined: 72,
+    executionStages: {
+      stage: 'FETCH',
+      filter: { genres: { '$eq': 'Drama' } },
+      nReturned: 14,
+      executionTimeMillisEstimate: 0,
+      works: 121,
+      advanced: 14,
+      needTime: 105,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      docsExamined: 72,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 72,
+        executionTimeMillisEstimate: 0,
+        works: 120,
+        advanced: 72,
+        needTime: 47,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: { genres: 1, runtime: 1, year: 1 },
+        indexName: 'genres_1_runtime_1_year_1',
+        isMultiKey: true,
+        multiKeyPaths: { genres: [ 'genres' ], runtime: [], year: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: {
+          genres: [ '["Short", "Short"]' ],
+          runtime: [ '[MinKey, MaxKey]' ],
+          year: [ '[-inf.0, 1970)' ]
+        },
+        keysExamined: 120,
+        seeks: 48,
+        dupsTested: 72,
+        dupsDropped: 0
+      }
+    }
+  },
+  command: {
+    find: 'imdb',
+    filter: { year: { '$lt': 1970 }, genres: { '$all': [ 'Short', 'Drama' ] } },
+    '$db': 'test'
+  },
+  serverInfo: {
+    host: 'devtopc',
+    port: 27017,
+    version: '7.0.5',
+    gitVersion: '7809d71e84e314b497f282ea8aa06d7ded3eb205'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted'
+  },

@@ -78,9 +78,9 @@ db.movies.updateOne({_id: ObjectId('65b39fbaaf9cbf38a08d0add')}, {$set: {title: 
 
 db.movies.updateOne({_id: ObjectId('65b39fbaaf9cbf38a08d0add')}, {$set: {title: "osman", "deneme": "test"}})
 
-    ? db.movies.updateOne({_id: ObjectId('65b39fbaaf9cbf38a08d0add')}, {$set: {primeActor: "$actors.0"}})
+? db.movies.updateOne({_id: ObjectId('65b39fbaaf9cbf38a08d0add')}, {$set: {primeActor: "$actors.0"}})
 
-    db.movies.updateOne({_id: ObjectId('65b39fbaaf9cbf38a08d0add')}, {$set: {"actors.0": "osman yaycıoğlu"}})
+db.movies.updateOne({_id: ObjectId('65b39fbaaf9cbf38a08d0add')}, {$set: {"actors.0": "osman yaycıoğlu"}})
 
 db.movies.updateOne({_id: ObjectId('65b39fbaaf9cbf38a08d0add')}, {$inc: {runtime_min: 2}})
 
@@ -131,3 +131,21 @@ db.imdb.updateOne({_id: ObjectId('573a1390f29313caabcd4135')},
         }
     }
 )
+
+db.imdb.find({runtime : {$gt : 120},year : {$gt : 2010}}).explain("executionStats")
+db.imdb.find({year : {$gt : 2010},runtime : {$gt : 120}}).explain("executionStats")
+db.imdb.find({year : {$gt : 2010},runtime : {$gt : 120},genres : "action"}).explain("executionStats")
+
+
+db.imdb.find({genres : {$all : ["Short","Drama"]}}).limit(10)
+db.imdb.find({genres : ["Short","Drama"]})
+
+db.imdb.createIndex({ fullplot: "text" })
+
+db.imdb.find({
+    $text : {
+        $search : "stationary"
+    }
+})
+
+db.imdb.find({ $text: { $search: '"stationary Faith"' ,$caseSensitive: false }}).count()
