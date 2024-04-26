@@ -1,0 +1,34 @@
+{
+  "firstName": "osman",
+  "lastName": "yaycıoğlu",
+  "middleName": "tulgar",
+  "height": 200,
+  "weight": 90,
+  "birth": "1970-11-11",
+  "gender": "MALE",
+  "password": "jsaghkds4234AS",
+  "credits": 1100.1,
+  "address": {
+    "city": "istanbul",
+    "addr": "ataşehir girişi",
+    "street": "ataturk"
+  }
+}
+
+{
+  "firstName": "ali",
+  "lastName": "veli",
+  "middleName": "tulgar",
+  "height": 200,
+  "weight": 90,
+  "birth": "1970-11-11",
+  "gender": "MALE",
+  "password": "rr3478RYR",
+  "credits": 1100.1,
+  "country": "TR",
+  "address": {
+    "city": "istanbul",
+    "addr": "ataşehir girişi",
+    "street": "ataturk"
+  }
+}
